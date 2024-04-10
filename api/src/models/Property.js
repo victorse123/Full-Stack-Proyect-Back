@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('house', {
+  sequelize.define('property', {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     address: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     regions: {
@@ -42,7 +42,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     swimmingPool: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     imageDefault: {
