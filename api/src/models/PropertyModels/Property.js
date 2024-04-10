@@ -9,6 +9,10 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
+    price: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
     zone: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -16,6 +20,7 @@ module.exports = (sequelize) => {
     address: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: false,
     },
     regions: {
       type: DataTypes.STRING,
