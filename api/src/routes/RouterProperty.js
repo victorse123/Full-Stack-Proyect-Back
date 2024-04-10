@@ -1,6 +1,11 @@
 const { Router } = require("express");
+
+const getProperty = require("../controllers/getPropertys");
+const getAllProperty = require("../controllers/getPropertyNameId");
+=======
 const getProperty = require("../controllers/getProperty");
 const getAllProperty = require("../controllers/getAllProperty");
+
 const postProperty = require("../controllers/postProperty");
 const {Type} = require("../db");
 
@@ -37,8 +42,13 @@ router.get("/:id", async (req, res) =>{
   
     try {
         // Buscar Property por ID
-        const propeID = await getAllProperty(id)
+        const propeID = await get
         res.status(200).json(propeID)
+=======
+
+        res.status(200).json(propeID)
+=======
+        res.status(200).json
     } catch (error) {
         res.status(500).json({error: error.messaje})
     }
