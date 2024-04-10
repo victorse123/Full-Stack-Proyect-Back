@@ -38,7 +38,7 @@ router.get("/:id", async (req, res) =>{
     try {
         // Buscar Property por ID
         const propeID = await getAllProperty(id)
-        res.status(200).json(pokeID)
+        res.status(200).json(propeID)
     } catch (error) {
         res.status(500).json({error: error.messaje})
     }

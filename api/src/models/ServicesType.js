@@ -1,12 +1,12 @@
 const { dataTypes, DataTypes } = require("sequelize");
 module.exports = (sequelize) => {
-    sequelize.define("type", {
+    sequelize.define("ServicesType", {
         id: {
             type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
         },
-        zone: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,

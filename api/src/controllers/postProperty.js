@@ -1,24 +1,29 @@
-const {House} = require("../db");
+const {Property} = require("../db");
 
-const postHouse = async (newHouse, res) => { // Agrega res como un parámetro
+const postProperty = async (newProperty, res) => { // Agrega res como un parámetro
     try {
-        let { zone, description, bedrooms, bathrooms, imageDefault, type } = newHouse;
+        let { zone, address, regions, description, bedrooms, bathrooms, parking, storage, swimmingpool, imageDefault, type } = newProperty;
 
-        // Carga la house creada a la database (DB)
-        let houseCreated = await House.create({
+        // Carga la property creada a la database (DB)
+        let propertyCreated = await Property.create({
             zone,
+            address,
+            regions,
             description,
             bedrooms,
             bathrooms,
+            parking,
+            storage,
+            swimmingpool,
             imageDefault,
             type
         });
 
-        return houseCreated; // Devuelve la house creada
+        return propertyCreated; // Devuelve la property creada
     } catch (error) {
         res.status(500).json({ error: error.message }); // Envía una respuesta de error al cliente
         console.log(error);
     }
 }
 
-module.exports = postHouse;
+module.exports = postProperty;

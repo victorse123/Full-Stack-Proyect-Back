@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { Property, ServicesType } = require("../db");
 
-const getProperty = async (req, res) => {
+const getPropertys = async (req, res) => {
     try {
        
         const propeDb = await getPropertyDB();
@@ -18,7 +18,7 @@ const getPropertyDB = async (req, res) => {
         const propertysDB = await Property.findAll({
             include: {
                 model: ServicesType,
-                attributes: ["zone"],
+                attributes: ["name"],
                 through: { attributes: [] },
             },
         });
@@ -29,7 +29,6 @@ const getPropertyDB = async (req, res) => {
                 zone: (e.zone).charAt(0).toUpperCase() + (e.zone).slice(1),
                 address: e.address,
                 regions: e.regions,
-                defending: e.defending,
                 description: e.description,
                 bedrooms: e.bedrooms,
                 bathrooms: e.bathrooms,
@@ -37,7 +36,7 @@ const getPropertyDB = async (req, res) => {
                 storage: e.storage,
                 swimmingPool: e.swimmingPool,
                 imageDefault: e.imageDefault, 
-                types: e.types.map((t) => t.zone),
+                types: e.types.map((t) => t.name),
                 createdDB: e.createdDB,
             };
         });
@@ -49,4 +48,4 @@ const getPropertyDB = async (req, res) => {
     }
 };
 
-module.exports = getProperty;
+module.exports = getPropertys;
