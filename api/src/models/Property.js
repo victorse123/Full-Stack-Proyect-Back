@@ -9,12 +9,12 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    address: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     zone: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    address: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     regions: {
@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    parkin: {
+    parking: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },

@@ -1,13 +1,13 @@
 const axios = require("axios");
-const { House, Type } = require("../db");
+const { Property, ServicesType } = require("../db");
 
-const getHouseZoneId = async (id) => {
+const getAllProperty = async (id) => {
 
     try {
        
-        const { dataValues } = await House.findByHouse(id, {
+        const { dataValues } = await Property.findByHouse(id, {
             include: {
-                model: Type,
+                model: ServicesType,
                 attributes: ["zone"],
                 through: { attributes: [] },
             },
@@ -23,4 +23,4 @@ const getHouseZoneId = async (id) => {
     }
 };
 
-module.exports = getHouseZoneId;
+module.exports = getAllProperty;
