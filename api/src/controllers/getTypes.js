@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { ServicesType } = require("../db");
+const { Types } = require("../db");
 
 const getTypes = async () => {
     try {
@@ -10,7 +10,7 @@ const getTypes = async () => {
                 name: resp.data.name
             };
             
-            const [type, created] = await ServicesType.findOrCreate({
+            const [type, created] = await Types.findOrCreate({
                 where: { name: resp.data.name },
             });
 
