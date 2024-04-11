@@ -10,7 +10,7 @@ const passport = require("passport");
 
 const server = express();
 
-server.name = "API";
+server.name = "api";
 server.use(cors({ credentials: true, origin: `${process.env.FRONTEND_URL}` }));
 server.use(morgan("dev"));
 server.use(express.json());
