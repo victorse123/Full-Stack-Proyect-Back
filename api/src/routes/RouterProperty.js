@@ -1,11 +1,7 @@
 const { Router } = require("express");
 
-const getProperty = require("../controllers/getPropertys");
-const getAllProperty = require("../controllers/getPropertyNameId");
-=======
-const getProperty = require("../controllers/getProperty");
-const getAllProperty = require("../controllers/getAllProperty");
-
+const getPropertys = require("../controllers/getPropertys");
+const getPropertyNameId = require("../controllers/getPropertyNameId");
 const postProperty = require("../controllers/postProperty");
 const {Type} = require("../db");
 
@@ -16,7 +12,7 @@ router.get("/", async (req, res) => {
 
     const {zone} = req.query
     try {
-        const propertys = await getProperty()
+        const propertys = await getPropertys()
         if(zone) {
             // Buscar Property por zona 
             const prope = await propertys.filter(pro => pro.zone.toLowerCase().startsWith(zone.toLowerCase()))
@@ -42,12 +38,12 @@ router.get("/:id", async (req, res) =>{
   
     try {
         // Buscar Property por ID
-        const propeID = await get
+        const propeID = await getPropertyNameId
         res.status(200).json(propeID)
-=======
+
 
         res.status(200).json(propeID)
-=======
+
         res.status(200).json
     } catch (error) {
         res.status(500).json({error: error.messaje})
@@ -64,7 +60,7 @@ router.post('/', async (req, res) => {
         // Busca  en la base de datos (DB)
         let typesDb = await Type.findAll({ where: { name: newPrope.type } });
 
-        // Asocia elos tipos encontrados
+        // Asocia los tipos encontrados
         await propeCreated.addType(typesDb);
 
         res.status(201).send('Property Creada');
