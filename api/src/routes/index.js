@@ -7,9 +7,9 @@ const router = Router();
 
 // Configurarion de los routers
 router.use("/property", RouterProperty);
-router.use("/tipe", RouterType);
+router.use("/type", RouterType);
 router.use("/user", RouterUser);
-router.use("/favorite, RouterFavorite")
+
 
 
 
