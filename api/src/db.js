@@ -1,9 +1,14 @@
 require("dotenv").config();
 
-const { sequelize } = require("sequelize");
-const fs = require("fd");
+const { Sequelize } = require("sequelize");
+const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+
+const typeModel = require("./models/Type");
+const propertyModel = require("./models/Property");
+const categoryModel = require("./models/Category");
+
 
 const sequelize = new Sequelize(
     `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pyd`,
@@ -13,7 +18,7 @@ const sequelize = new Sequelize(
     }
 );
 
-const basename = path.basename(__filaname);
+const basename = path.basename(__filename);
 
 const modelDefiners = [];
 
@@ -25,10 +30,16 @@ fs.readdirSync(path.join(__dirname, "/models")) // Lee todos los archivos de la 
             file.slice(-3) === ".js"
     )
     .forEach((file) => {
-        modelDefiners.push(require(path.join(--dirname, "/models", file)));
+        // modelDefiners.push(require(path.join(__dirname, "/models", file)));
+        modelDefiners.push(require(path.join(__dirname, "models", file))(sequelize));
+
     });
 
-modelDefiners.forEach((model) => model(sequelize));    // conexion (sequelize) a todos los modelos
+// modelDefiners.forEach((model) => model(sequelize));    // conexion (sequelize) a todos los modelos
+
+modelDefiners.push(typeModel(sequelize));
+modelDefiners.push(propertyModel(sequelize));
+modelDefiners.push(categoryModel(sequelize));
 
 let entries = Object.entries(sequelize.models);      // Capitalizalos nombres de los modelos ie: product => Product
 let capsEntries = entries.map((entry) => [
@@ -53,5 +64,4 @@ module.exports = {
    ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
    conn: sequelize, // para importart la conexión { conn } = require('./db.js');
 };
-
 

@@ -1,16 +1,14 @@
 const { Router } = require('express');
 const RouterProperty = require("./RouterProperty");
 const RouterType = require("./RouterType");
-const RouterUser = require("./RouterUser")
+// const RouterUser = require("./RouterUser");
 
 const router = Router();
 
 // Configurarion de los routers
 router.use("/property", RouterProperty);
 router.use("/type", RouterType);
-router.use("/user", RouterUser);
-
-
+// router.use("/user", RouterUser);
 
 
 module.exports = router;
