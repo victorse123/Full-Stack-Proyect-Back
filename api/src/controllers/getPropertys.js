@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Property, ServicesType } = require("../db");
+const { Property, Type } = require("../db");
 
 const getPropertys = async (req, res) => {
     try {
@@ -17,7 +17,7 @@ const getPropertyDB = async (req, res) => {
     try {
         const propertysDB = await Property.findAll({
             include: {
-                model: ServicesType,
+                model: Type,
                 attributes: ["name"],
                 through: { attributes: [] },
             },
