@@ -11,7 +11,7 @@ const categoryModel = require("./models/Category");
 
 
 const sequelize = new Sequelize(
-    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pyd`,
+    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/raices`,
     {
         logging: false,  
         native: false,

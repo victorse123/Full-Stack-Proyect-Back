@@ -62,5 +62,35 @@ router.post('/', async (req, res) => {
         console.log(error);
     }
 });
+
+
+router.post('/property', async (req, res) => {
+    console.log(req.body);
+    try {
+        const newPrope = req.body;
+        const propeCreated = await postProperty(newPrope, res);
+    
+        res.status(201).json(propeCreated);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+        console.log(error);
+    }
+});
+
+router.post('/type',async(req,res)=>{
+    try {
+        const {name}=req.body
+        const newEpisode= await createType(name)
+        res.status(201).json(newEpisode)
+        
+    } catch (error) {
+        res.status(500).json({error:error.message})
+    }})
+
+
+
+
+
+
 module.exports = router;
 
