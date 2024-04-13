@@ -7,10 +7,8 @@ const postProperty = async (newProperty, res) => { // Agrega res como un paráme
 
         const typeDb = await Type.findOne({ where: { name: type } });
 
-        if (!typeDb) {
-            return res.status(404).json({ error: 'Tipo no encontrado' });
-        }
-
+       
+        if (!typeDb)throw new Error('Tipo no encontrado');
 
 
         // Carga la property creada a la database (DB)
@@ -31,7 +29,7 @@ const postProperty = async (newProperty, res) => { // Agrega res como un paráme
 
         return propertyCreated; // Devuelve la property creada
     } catch (error) {
-        res.status(500).json({ error: error.message }); // Envía una respuesta de error al cliente
+        throw Error(error) // Envía una respuesta de error al cliente
         console.log(error);
     }
 }
