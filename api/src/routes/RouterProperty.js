@@ -3,6 +3,8 @@ const { Router } = require("express");
 const getPropertys = require("../controllers/getPropertys");
 const getPropertyNameId = require("../controllers/getPropertyNameId");
 const postProperty = require("../controllers/postProperty");
+const findAllProperties= require("../controllers/findAllProperties")
+
 const { Type } = require("../db");
 
 const router = Router();
@@ -56,6 +58,20 @@ router.post('/', async (req, res) => {
         console.log(error);
     }
 });
+
+
+router.get('/getProperties',async(req,res)=>{
+
+    try {
+        
+    const properties= await findAllProperties()
+    res.status(200).json(properties)
+     
+    
+    } catch (error) {
+        res.status(500).json({error:error.message})
+    }
+})
 
 
 module.exports = router;
