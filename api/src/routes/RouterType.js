@@ -9,7 +9,7 @@ router.get("/", async (req,res) => {
 });
 
 
-router.post('/type',async(req,res)=>{
+router.post('/',async(req,res)=>{
     try {
         const {name}=req.body
         const newEpisode= await createType(name)
