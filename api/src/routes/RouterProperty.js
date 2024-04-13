@@ -49,18 +49,14 @@ router.post('/', async (req, res) => {
     try {
         const newPrope = req.body;
         const propeCreated = await postProperty(newPrope, res);
-        
-        // Buscar en la base de datos (DB) los tipos asociados a la propiedad
-        const typesDb = await Type.findAll({ where: { name: newPrope.type } });
-        
-        // Asociar los tipos encontrados
-        await propeCreated.addType(typesDb);
-        
-        res.status(201).send('Property created');
+    
+        res.status(201).json(propeCreated);
     } catch (error) {
         res.status(500).json({ error: error.message });
         console.log(error);
     }
 });
+
+
 module.exports = router;
 
