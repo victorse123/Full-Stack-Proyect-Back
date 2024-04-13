@@ -4,11 +4,11 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   const Property = sequelize.define('property', {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-    },
+    
+    id:{type:DataTypes.INTEGER,
+      autoIncrement:true,
+    primaryKey:true
+  },
     price: {
       type: DataTypes.FLOAT,
       allowNull: false,
