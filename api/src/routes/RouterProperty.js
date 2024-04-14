@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const getPropertys = require("../controllers/getPropertys");
+const getProperties = require("../controllers/getProperties");
 const getPropertyNameId = require("../controllers/getPropertyNameId");
 const postProperty = require("../controllers/postProperty");
 const findAllProperties= require("../controllers/findAllProperties")
@@ -13,17 +13,17 @@ const router = Router();
 router.get("/", async (req, res) => {
     const { zone } = req.query;
     try {
-        const propertys = await getPropertys();
+        const properties = await getProperties();
         if (zone) {
             // Buscar Property por zona 
-            const propByZone = propertys.filter(prop => prop.zone.toLowerCase().startsWith(zone.toLowerCase()));
+            const propByZone = properties.filter(prop => prop.zone.toLowerCase().startsWith(zone.toLowerCase()));
             if (propByZone.length > 0) {
                 res.status(200).json(propByZone);
             } else {
                 res.status(404).json({ message: "Properties not found for the given zone" });
             }
         } else {
-            res.json(propertys);
+            res.json(properties);
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
