@@ -1,23 +1,40 @@
-const { Property, Type } = require('../db');
+// const { Property, Type } = require('../db');
 
-const findAllProperties = async () => {
-    try {
+// const findAllProperties = async () => {
+//     try {
 
         
             
 
+//         const properties = await Property.findAll({
+//             include: Type // Incluye la información del tipo correspondiente
+//         });
+
+//         // Mapeamos los resultados y reemplazamos typeId con el nombre del tipo
+//         const mappedProperties = properties.map(property => ({
+//             ...property.toJSON(),
+//             typeId: property.Type.name,// Reemplaza typeId con el nombre del tipo
+//               Type:undefined
+//         }));
+
+//         return mappedProperties;
+//     } catch (error) {
+//         throw error;
+//     }
+// };
+
+// module.exports = findAllProperties;
+
+
+const findAllProperties = async () => {
+    try {
         const properties = await Property.findAll({
-            include: Type // Incluye la información del tipo correspondiente
+            include: { model: Type } // Incluir la asociación Type correctamente
         });
 
-        // Mapeamos los resultados y reemplazamos typeId con el nombre del tipo
-        const mappedProperties = properties.map(property => ({
-            ...property.toJSON(),
-            typeId: property.Type.name,// Reemplaza typeId con el nombre del tipo
-              Type:undefined
-        }));
+        // No necesitas mapear los resultados ni eliminar el Type del resultado
 
-        return mappedProperties;
+        return properties;
     } catch (error) {
         throw error;
     }
