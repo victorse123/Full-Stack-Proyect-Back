@@ -39,5 +39,30 @@ const findAllProperties = async () => {
         throw error;
     }
 };
+ // PAGINADO...
+const findAllPropertiesWithPagination = async (page, pageSize) => {
+    try {
+        const offset = (page - 1) * pageSize;
 
-module.exports = findAllProperties;
+        const properties = await Property.findAndCountAll({
+            limit: pageSize,
+            offset: offset,
+            include: Type
+        });
+
+        const totalItems = properties.count;
+        const totalPages = Math.ceil(totalItems / pageSize);
+
+        return {
+            properties: properties.rows,
+            meta: {
+                totalItems,
+                totalPages
+            }
+        };
+    } catch (error) {
+        throw error;
+    }
+};
+
+module.exports = { findAllProperties, findAllPropertiesWithPagination };
