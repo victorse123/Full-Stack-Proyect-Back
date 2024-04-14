@@ -3,7 +3,7 @@ const {Property,Type} = require("../db");
 
 const postProperty = async (newProperty, res) => { // Agrega res como un parámetro
     try {
-        let { price,zone, address, regions, description, bedrooms, bathrooms, parking, storage, swimmingPool, imageDefault, type } = newProperty;
+        let { price, title, zone, address, region, city, description, bedrooms, bathrooms, parking, storage, swimmingPool, imageDefault, type } = newProperty;
 
         const typeDb = await Type.findOne({ where: { name: type } });
 
@@ -14,9 +14,11 @@ const postProperty = async (newProperty, res) => { // Agrega res como un paráme
         // Carga la property creada a la database (DB)
         let propertyCreated = await Property.create({
             price,
+            title,
             zone,
             address,
-            regions,
+            region,
+            city,
             description,
             bedrooms,
             bathrooms,

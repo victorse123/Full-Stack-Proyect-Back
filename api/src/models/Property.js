@@ -13,6 +13,10 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     zone: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -22,7 +26,11 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: false,
     },
-    regions: {
+    region: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    city: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -52,7 +60,7 @@ module.exports = (sequelize) => {
     },
     imageDefault: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     isActive: {
       type: DataTypes.BOOLEAN,
