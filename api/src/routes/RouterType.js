@@ -3,10 +3,10 @@ const getTypes = require("../controllers/getTypes");
 const createType=require("../controllers/createType");
 
 const router = Router();
-router.get("/", async (req,res) => {
-    const types = await getTypes();
-    res.send(types);
-});
+// router.get("/", async (req,res) => {
+//     const types = await getTypes();
+//     res.json(types);
+// });
 
 
 router.post('/',async(req,res)=>{

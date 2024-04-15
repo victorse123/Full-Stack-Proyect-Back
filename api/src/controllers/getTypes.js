@@ -26,7 +26,7 @@ const getTypes = async () => {
         return typesAll;
     } catch (error) {
         
-        res.status(400).json({ error: error.message });
+        throw Error(error)
     }
 };
 

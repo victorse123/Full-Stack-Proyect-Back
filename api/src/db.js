@@ -11,7 +11,7 @@ const categoryModel = require("./models/Category");
 
 
 const sequelize = new Sequelize(
-    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/pyd`,
+    `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/sequelize`,
     // `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/railway`,
     {
         logging: false,  
