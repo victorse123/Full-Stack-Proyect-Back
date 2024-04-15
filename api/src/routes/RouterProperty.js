@@ -4,7 +4,7 @@ const getProperties = require("../controllers/getProperties");
 const getPropertyNameId = require("../controllers/getPropertyNameId");
 const postProperty = require("../controllers/postProperty");
 const findAllProperties= require("../controllers/findAllProperties")
-
+const findPropertyId=require ('../controllers/findPropertyById')
 const { Type } = require("../db");
 
 const router = Router();
@@ -34,7 +34,7 @@ router.get("/", async (req, res) => {
 // router.get("/:id", async (req, res) => {
 //     const { id } = req.params;
 //     try {
-//         const property = await getPropertyNameId(id);
+//         const property = await findPropertyId(id);
 //         if (property) {
 //             res.status(200).json(property);
 //         } else {

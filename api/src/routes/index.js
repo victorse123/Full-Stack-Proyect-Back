@@ -2,6 +2,7 @@ const { Router } = require('express');
 const RouterProperty = require("./RouterProperty");
 const RouterType = require("./RouterType");
 const RouterCategory = require("./RouterCategory");
+const RouterFindId= require ("./RouterFindId")
 // const RouterUser = require("./RouterUser");
 
 const router = Router();
@@ -10,6 +11,7 @@ const router = Router();
 router.use("/property", RouterProperty);
 router.use("/type", RouterType);
 router.use("/category", RouterCategory)
+router.use("/propertyId",RouterFindId)
 // router.use("/user", RouterUser);
 
 
