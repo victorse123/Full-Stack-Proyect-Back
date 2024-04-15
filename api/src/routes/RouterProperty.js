@@ -4,7 +4,7 @@ const getProperties = require("../controllers/getProperties");
 const getPropertyNameId = require("../controllers/getPropertyNameId");
 const postProperty = require("../controllers/postProperty");
 const findAllProperties= require("../controllers/findAllProperties")
-
+const findPropertyId=require ('../controllers/findPropertyById')
 const { Type } = require("../db");
 
 const router = Router();
@@ -30,20 +30,20 @@ router.get("/", async (req, res) => {
     }
 });
 
-// Ruta para buscar Property por ID
-router.get("/:id", async (req, res) => {
-    const { id } = req.params;
-    try {
-        const property = await getPropertyNameId(id);
-        if (property) {
-            res.status(200).json(property);
-        } else {
-            res.status(404).json({ message: "Property not found" });
-        }
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
+// // Ruta para buscar Property por ID
+// router.get("/:id", async (req, res) => {
+//     const { id } = req.params;
+//     try {
+//         const property = await findPropertyId(id);
+//         if (property) {
+//             res.status(200).json(property);
+//         } else {
+//             res.status(404).json({ message: "Property not found" });
+//         }
+//     } catch (error) {
+//         res.status(500).json({ error: error.message });
+//     }
+// });
 
 // Ruta para crear una nueva Property
 router.post('/', async (req, res) => {

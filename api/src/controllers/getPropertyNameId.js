@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Property, Type } = require("../db");
+const { Property, Type,Category } = require("../db");
 
 const getPropertyNameId = async (id) => {
     try {
