@@ -4,7 +4,7 @@ const RouterType = require("./RouterType");
 const RouterCategory = require("./RouterCategory");
 
 const RouterPagination = require("./RouterPagination");
-=======
+
 const RouterFindId= require ("./RouterFindId")
 
 // const RouterUser = require("./RouterUser");
