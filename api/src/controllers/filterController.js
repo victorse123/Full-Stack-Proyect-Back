@@ -25,6 +25,10 @@ const filterController = async (type, category, priceOrder,zone) => {
             filter.categoryId = categoryDb.id;
         }
 
+        if (zone){
+            filter.zone=zone
+        }
+
         // Definir orden predeterminado
         let order = [];
 
