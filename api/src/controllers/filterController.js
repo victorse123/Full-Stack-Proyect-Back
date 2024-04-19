@@ -2,7 +2,7 @@ const { Property, Type ,Category} = require("../db");
 
 
 
-const filterController = async (type, category, priceOrder,zone) => {
+const filterController = async (type, category, priceOrder) => {
     try {
         // Objeto para almacenar los filtros de la consulta
         let filter = {};
@@ -23,10 +23,6 @@ const filterController = async (type, category, priceOrder,zone) => {
                 throw new Error('Categoría de propiedad no encontrada');
             }
             filter.categoryId = categoryDb.id;
-        }
-
-        if (zone){
-            filter.zone=zone
         }
 
         // Definir orden predeterminado
