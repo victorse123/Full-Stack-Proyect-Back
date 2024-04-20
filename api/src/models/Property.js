@@ -59,7 +59,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     imageDefault: {
-      type: DataTypes.STRING,
+      type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: true,
     },
     isActive: {
