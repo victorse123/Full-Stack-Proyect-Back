@@ -1,4 +1,3 @@
-
 const {Property,Type,Category} = require("../db");
 
 const postProperty = async (newProperty, res) => { // Agrega res como un parámetro

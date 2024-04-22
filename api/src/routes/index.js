@@ -4,7 +4,8 @@ const RouterType = require("./RouterType");
 const RouterCategory = require("./RouterCategory");
 const RouterPagination = require("./RouterPagination");
 const RouterFindId = require("./RouterFindId");
-const RouterBooking = require("./RouterBooking")
+const RouterBooking = require("./RouterBooking");
+const RouterUpdateProperty = require("./RouterUpdateProperty")
 
 // const RouterUser = require("./RouterUser");
 
@@ -21,6 +22,7 @@ router.use("/category", RouterCategory)
 router.use("/propertyId" ,RouterFindId)
 
 router.use('/booking', RouterBooking);
+router.use('/update', RouterUpdateProperty);
 
 // router.use("/user", RouterUser);
 

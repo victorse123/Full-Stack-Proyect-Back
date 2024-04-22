@@ -1,7 +1,5 @@
 const { Property, Type ,Category} = require("../db");
 
-
-
 const filterController = async (type, category, priceOrder) => {
     try {
         // Objeto para almacenar los filtros de la consulta

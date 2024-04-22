@@ -6,5 +6,4 @@ const router = Router();
 // Ruta para realizar una reserva
 router.post('/', postBookingController.realizarReserva);
 
-
 module.exports = router;

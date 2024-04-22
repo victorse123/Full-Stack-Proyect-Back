@@ -31,8 +31,6 @@ router.get("/", async (req, res) => {
     }
 });
 
-
-
 // Ruta para crear una nueva Property
 router.post('/', async (req, res) => {
     console.log(req.body);
@@ -71,12 +69,6 @@ router.get('/filterProperties', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
-
-
-
-
-
 
 module.exports = router;
 
