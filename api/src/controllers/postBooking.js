@@ -21,19 +21,6 @@ exports.realizarReserva = async (req, res) => {
     text: `Has reservado la propiedad ${propiedad}. Gracias por tu reserva.`
   };
 
-
-//   transporter.sendMail(mailOptions, function(error, info){
-//     if (error) {
-//       console.log(error);
-//       res.status(500).send('Error al enviar el correo electrónico.');
-//     } else {
-//       console.log('Correo enviado: ' + info.response);
-//       res.status(200).send('Correo enviado correctamente.');
-//     }
-//   });
-// };
-
-
 try {
     // Enviar el correo electrónico
     const info = await transporter.sendMail(mailOptions);

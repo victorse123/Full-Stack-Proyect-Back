@@ -3,18 +3,6 @@ const findAllProperties = require("../controllers/findWithPagination");
 const findAllPropertiesWithPagination=require('../controllers/findWithPagination')
 const router = Router();
 
-
-// router.get("/properties", async (req, res) => {
-//     try {
-//         const { page = 1, pageSize = 10 } = req.query; 
-//         const result = await findAllProperties(parseInt(page), parseInt(pageSize));
-//         res.status(200).json(result);
-//     } catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// });
-
-
 router.get("/properties", async (req, res) => {
     try {
         const page = parseInt(req.query.page) || 1;
@@ -26,9 +14,5 @@ router.get("/properties", async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-
-
-
-
 
 module.exports = router;

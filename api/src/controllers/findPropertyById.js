@@ -18,9 +18,6 @@ const findPropertyId = async (id) => {
             category: propertyId.category.name
         };
 
-
-
-
         //return simplifiedProperties;
         return simplifiedProperties
     } catch (error) {
