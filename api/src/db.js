@@ -8,6 +8,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT ,DB_NAME} = process.env;
 const typeModel = require("./models/Type");
 const propertyModel = require("./models/Property");
 const categoryModel = require("./models/Category");
+const userModel=require('./models/UserModels/User')
 
 
 const sequelize = new Sequelize(
@@ -41,6 +42,7 @@ fs.readdirSync(path.join(__dirname, "/models")) // Lee todos los archivos de la 
 modelDefiners.push(typeModel(sequelize));
 modelDefiners.push(propertyModel(sequelize));
 modelDefiners.push(categoryModel(sequelize));
+modelDefiners.push(userModel(sequelize));
 
 let entries = Object.entries(sequelize.models);      // Capitalizalos nombres de los modelos ie: product => Product
 let capsEntries = entries.map((entry) => [
@@ -51,7 +53,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Property, Type, Category } = sequelize.models;
+const { Property, Type, Category,User } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);

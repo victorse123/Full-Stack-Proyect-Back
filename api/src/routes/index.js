@@ -2,7 +2,7 @@ const { Router } = require('express');
 const RouterProperty = require("./RouterProperty");
 const RouterType = require("./RouterType");
 const RouterCategory = require("./RouterCategory");
-
+const RouterUser=require('./RouterUser')
 const RouterPagination = require("./RouterPagination");
 
 const RouterFindId= require ("./RouterFindId")
@@ -21,7 +21,7 @@ router.use("/pagination", RouterPagination);
 router.use("/category", RouterCategory)
 router.use("/propertyId",RouterFindId)
 
-// router.use("/user", RouterUser);
+router.use("/user", RouterUser);
 
 
 module.exports = router;
