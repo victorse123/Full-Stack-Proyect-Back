@@ -2,8 +2,6 @@ const { Router } = require("express");
 const router = Router();
 const findPropertyById=require('../controllers/findPropertyById');
 
-
-
 // Ruta para buscar Property por ID
 router.get("/:id", async (req, res) => {
     const { id } = req.params;

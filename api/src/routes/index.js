@@ -2,10 +2,13 @@ const { Router } = require('express');
 const RouterProperty = require("./RouterProperty");
 const RouterType = require("./RouterType");
 const RouterCategory = require("./RouterCategory");
-const RouterUser=require('./RouterUser')
-const RouterPagination = require("./RouterPagination");
 
-const RouterFindId= require ("./RouterFindId")
+const RouterUser=require('./RouterUser')
+
+const RouterPagination = require("./RouterPagination");
+const RouterFindId = require("./RouterFindId");
+const RouterBooking = require("./RouterBooking");
+const RouterUpdateProperty = require("./RouterUpdateProperty")
 
 // const RouterUser = require("./RouterUser");
 
@@ -19,9 +22,14 @@ router.use("/category", RouterCategory);
 router.use("/pagination", RouterPagination);
 
 router.use("/category", RouterCategory)
-router.use("/propertyId",RouterFindId)
+router.use("/propertyId" ,RouterFindId)
+
 
 router.use("/user", RouterUser);
+router.use('/booking', RouterBooking);
+router.use('/update', RouterUpdateProperty);
 
+
+// router.use("/user", RouterUser);
 
 module.exports = router;

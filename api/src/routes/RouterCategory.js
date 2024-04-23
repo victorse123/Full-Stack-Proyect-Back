@@ -9,7 +9,6 @@ router.get("/", async (req,res) => {
     res.send(categories);
 });
 
-
 router.post('/',async(req,res)=>{
     try {
         const {name}=req.body
@@ -19,8 +18,5 @@ router.post('/',async(req,res)=>{
     } catch (error) {
         res.status(500).json({error:error.message})
     }})
-
-
-
 
 module.exports = router; 

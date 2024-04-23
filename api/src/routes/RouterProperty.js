@@ -31,8 +31,6 @@ router.get("/", async (req, res) => {
     }
 });
 
-
-
 // Ruta para crear una nueva Property
 router.post('/', async (req, res) => {
     console.log(req.body);
@@ -64,19 +62,13 @@ router.get('/getProperties',async(req,res)=>{
 
 router.get('/filterProperties', async (req, res) => {
     try {
-        const { type, category, priceOrder,zone } = req.query;
-        const properties = await filterController(type, category, priceOrder,zone);
+        const { type, category, priceOrder } = req.query;
+        const properties = await filterController(type, category, priceOrder);
         res.status(200).json(properties);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
-
-
-
-
-
-
 
 module.exports = router;
 
