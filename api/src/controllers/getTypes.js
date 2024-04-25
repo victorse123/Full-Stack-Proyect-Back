@@ -1,7 +1,7 @@
 const axios = require("axios");
-const { ServicesType } = require("../db");
+const { Types } = require("../db");
 
-const getTypeServices = async () => {
+const getTypes = async () => {
     try {
         const typesAll = await Promise.all(data.results.map(async (data) => {
             let resp = await axios.get(data.db);
@@ -10,15 +10,15 @@ const getTypeServices = async () => {
                 name: resp.data.name
             };
             
-            const [type, created] = await ServicesType.findOrCreate({
+            const [type, created] = await Types.findOrCreate({
                 where: { name: resp.data.name },
             });
 
             // la información de created se imprime un mensaje si el tipo de servicio fue creado o encontrado
             if (created) {
-                console.log(`Nuevo tipo de servicio creado: ${type.name}`);
+                console.log(`Nuevo tipo de property creada: ${type.name}`);
             } else {
-                console.log(`Tipo de servicio existente encontrado: ${type.name}`);
+                console.log(`Tipo de property existente encontrada: ${type.name}`);
             }
 
             return typeAdd;
@@ -30,4 +30,4 @@ const getTypeServices = async () => {
     }
 };
 
-module.exports = getTypeServices;
+module.exports = getTypes;

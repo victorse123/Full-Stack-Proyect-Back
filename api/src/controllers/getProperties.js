@@ -1,34 +1,33 @@
-const axios = require("axios");
-const { Property, ServicesType } = require("../db");
+const { Property, Type } = require("../db");
 
-const getPropertys = async (req, res) => {
+const getProperties = async (req, res) => {
     try {
-       
         const propeDb = await getPropertyDB();
-       
-        return propeDb;
+        res.json(propeDb); // Enviar respuesta al cliente
     } catch (error) {
-       
         res.status(400).json({ error: error.message });
     }
 };
 
-const getPropertyDB = async (req, res) => {
+const getPropertyDB = async () => {
     try {
-        const propertysDB = await Property.findAll({
+        const propertiesDB = await Property.findAll({
             include: {
-                model: ServicesType,
+                model: Type,
                 attributes: ["name"],
-                through: { attributes: [] },
+              
             },
         });
 
-        const filterPrope = propertysDB.map((e) => {
+        const filterPrope = propertiesDB.map((e) => {
             return {
                 id: e.id,
+                price: e.price,
+                title: e.title,
                 zone: (e.zone).charAt(0).toUpperCase() + (e.zone).slice(1),
                 address: e.address,
-                regions: e.regions,
+                region: e.regions,
+                city: e.city,
                 description: e.description,
                 bedrooms: e.bedrooms,
                 bathrooms: e.bathrooms,
@@ -36,16 +35,15 @@ const getPropertyDB = async (req, res) => {
                 storage: e.storage,
                 swimmingPool: e.swimmingPool,
                 imageDefault: e.imageDefault, 
-                types: e.types.map((t) => t.name),
+                types: e.Types.map((t) => t.name), 
                 createdDB: e.createdDB,
             };
         });
 
-       
         return filterPrope;
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        throw new Error(error.message);
     }
 };
 
-module.exports = getPropertys;
+module.exports = getProperties;

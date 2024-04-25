@@ -3,14 +3,18 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('property', {
-    id: {
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
-    },
+  const Property = sequelize.define('property', {
+    
+    id:{type:DataTypes.INTEGER,
+      autoIncrement:true,
+    primaryKey:true
+  },
     price: {
       type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    title: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     zone: {
@@ -22,7 +26,11 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: false,
     },
-    regions: {
+    region: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    city: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -51,8 +59,12 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     imageDefault: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: true,
+    },
+    isActive: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
     },
     createdDB: {
       type: DataTypes.BOOLEAN,
@@ -60,4 +72,6 @@ module.exports = (sequelize) => {
       defaultValue: true,
     },
 },{timestamps: false});
+
+return Property
 };

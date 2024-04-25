@@ -1,22 +1,25 @@
 const axios = require("axios");
-const { Property, ServicesType } = require("../db");
+const { Property, Type,Category } = require("../db");
 
 const getPropertyNameId = async (id) => {
-
     try {
-       
-        const { dataValues } = await Property.findByProperty(id, {
+        const property = await Property.findByPk(id, {
             include: {
-                model: ServicesType,
+                model: Type,
                 attributes: ["name"],
                 through: { attributes: [] },
             },
         });
-        dataValues.name = dataValues.name.charAt(0).toUpperCase() + dataValues.name.slice(1);
-        dataValues.types = dataValues.types.map((e) => e.name);
 
-      
-        return dataValues;
+        if (!property) {
+            return null; // No se encontró ninguna propiedad con el ID dado
+        }
+
+        const propertyData = property.toJSON(); // Convertir el objeto a formato JSON
+        propertyData.name = propertyData.name.charAt(0).toUpperCase() + propertyData.name.slice(1);
+        propertyData.types = propertyData.types.map((type) => type.name);
+
+        return propertyData;
     } catch (error) {
         console.error(error);
         return null;
