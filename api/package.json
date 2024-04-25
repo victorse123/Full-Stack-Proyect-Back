@@ -7,7 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "nodemon -L",
+    "start": "node ./index.js",
+    "start-dev": "nodemon -L",
     "test": "mocha -w ./tests/**/*.spec.js"
   },
   "author": "Fefi, Rules y Victor",
