@@ -3,7 +3,7 @@ const { Property, Type, Category } = require("../db");
 const putProperty = async (propertyId, updatedProperty) => {
     try {
         // Desestructura los datos de la propiedad actualizada
-        let { price, title, zone, address, region, city, description, bedrooms, bathrooms, parking, storage, swimmingPool, imageDefault, type, category } = updatedProperty;
+        let { price, title, zone, address, region, city, description, bedrooms, bathrooms, parking, storage, swimmingPool, imageDefault, type, category, isActive } = updatedProperty;
 
         // Encuentra la propiedad existente por su ID
         let property = await Property.findByPk(propertyId);
@@ -42,12 +42,13 @@ const putProperty = async (propertyId, updatedProperty) => {
             swimmingPool,
             imageDefault,
             typeId: typeDb.id,
-            categoryId: categoryDB.id
+            categoryId: categoryDB.id,
+            isActive
         });
 
         // Asigna los nombres del tipo y la categoría a la propiedad actualizada
-        property.typeId = typeDb;
-        property.categoryId = categoryDB;
+        property.typeId = typeDb.name;
+        property.categoryId = categoryDB.name;
 
 
      
