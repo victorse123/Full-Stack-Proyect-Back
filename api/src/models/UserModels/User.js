@@ -35,11 +35,16 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
-    name: {
+    DNI: {
       type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+      //allowNull: false,
+      //unique: true,
   },
+  dateOfBirth: {
+    type: DataTypes.STRING,
+    //allowNull: false,
+    //unique: true
+},
   
 
 

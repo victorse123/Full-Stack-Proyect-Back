@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const createUser = require('../controllers/createUser')
 const findUser=require('../controllers/findUser')
+const updateUser=require('../controllers/updateUser')
 const router = Router();
 
 router.post('/', async (req, res) => {
@@ -25,7 +26,17 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.put("/:userId", async (req, res) => {
+    const userId = req.params.userId;
+    const updatedUserData = req.body;
 
+    try {
+        const updatedUser = await updateUser(userId, updatedUserData);
+        res.json(updatedUser);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
 
 
 
