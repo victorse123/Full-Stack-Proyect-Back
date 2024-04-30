@@ -1,13 +1,24 @@
-const { Property, Type ,Category} = require("../db");
+const { Property, Type, Category } = require("../db");
+const { Op } = require("sequelize");
+
+const normalizeString = (str) => {
+    return str.toLowerCase()
+        .normalize("NFD") // Normalizar tildes
+        .replace(/[\u0300-\u036f]/g, "") // Eliminar tildes
+        .replace(/-/g, ""); // Eliminar guiones
+};
 
 const filterController = async (type, category, priceOrder, zone) => {
     try {
         // Objeto para almacenar los filtros de la consulta
-        let filter = {};
+        let filter = {
+            isActive: true
+        };
 
         // Agregar filtro de tipo si se proporciona
         if (type) {
-            const typeDb = await Type.findOne({ where: { name: type } });
+            const normalizedType = normalizeString(type);
+            const typeDb = await Type.findOne({ where: { name: normalizedType } });
             if (!typeDb) {
                 throw new Error('Tipo de propiedad no encontrado');
             }
@@ -16,15 +27,18 @@ const filterController = async (type, category, priceOrder, zone) => {
 
         // Agregar filtro de categoría si se proporciona
         if (category) {
-            const categoryDb = await Category.findOne({ where: { name: category } });
+            const normalizedCategory = normalizeString(category);
+            const categoryDb = await Category.findOne({ where: { name: normalizedCategory } });
             if (!categoryDb) {
                 throw new Error('Categoría de propiedad no encontrada');
             }
             filter.categoryId = categoryDb.id;
         }
 
-        if (zone){
-            filter.zone = zone;
+        // Normalizar la zona si se proporciona
+        if (zone) {
+            const normalizedZone = normalizeString(zone);
+            filter.zone = { [Op.iLike]: `%${normalizedZone}%` }; // Usar Op.iLike para la búsqueda insensible a mayúsculas/minúsculas
         }
 
         // Definir orden predeterminado

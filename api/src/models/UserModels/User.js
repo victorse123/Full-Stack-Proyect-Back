@@ -23,10 +23,26 @@ module.exports = (sequelize) => {
             isEmail: true // Asegura que el valor de email sea una dirección de correo electrónico válida
         }
     },
+    imageDefault: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: true,
+    },
     role: {
         type: DataTypes.STRING,
         defaultValue: 'user',
-    }
+    },
+    isActive: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+  },
+  
+
+
       
     },
     {  timestamps: false} );

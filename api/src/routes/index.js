@@ -9,7 +9,7 @@ const RouterPagination = require("./RouterPagination");
 const RouterFindId = require("./RouterFindId");
 const RouterBooking = require("./RouterBooking");
 const RouterUpdateProperty = require("./RouterUpdateProperty")
-
+ const RouterEdit=require('./RouterEdit')
 // const RouterUser = require("./RouterUser");
 
 const router = Router();
@@ -28,6 +28,7 @@ router.use("/propertyId" ,RouterFindId)
 router.use("/user", RouterUser);
 router.use('/booking', RouterBooking);
 router.use('/update', RouterUpdateProperty);
+router.use("/edit",RouterEdit)
 
 
 // router.use("/user", RouterUser);
