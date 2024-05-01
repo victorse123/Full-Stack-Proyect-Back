@@ -10,7 +10,6 @@ const findPropertyId = async (id) => {
             // Incluir la asociación Type correctamente
     });
 
-        // No necesitas mapear los resultados ni eliminar el Type del resultado
 
         const simplifiedProperties = {
             ...propertyId.toJSON(),

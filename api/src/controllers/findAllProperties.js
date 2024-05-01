@@ -14,8 +14,6 @@ const findAllProperties = async (type) => {
             
         });
 
-        // No necesitas mapear los resultados ni eliminar el Type del resultado
-
         const simplifiedProperties = properties.map(property => ({
             ...property.toJSON(),
             type: property.type.name,
@@ -29,9 +27,3 @@ const findAllProperties = async (type) => {
 };
 
 module.exports =  findAllProperties;
-//https://github.com/maxisosa89/challenge-alkemy-nodejs
-//https://github.com/maxisosa89
-
-
-
-//https://github.com/maxisosa89/PF_backend_ecommerce/blob/dev/src/models/Reviews.js

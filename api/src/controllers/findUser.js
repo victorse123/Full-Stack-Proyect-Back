@@ -1,7 +1,4 @@
-
 const {User}=require('../db')
-
-
 
 // Función para buscar un usuario por su correo electrónico
 const findUser = async (email) => {

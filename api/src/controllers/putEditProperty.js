@@ -50,9 +50,6 @@ const putProperty = async (propertyId, updatedProperty) => {
         property.typeId = typeDb.name;
         property.categoryId = categoryDB.name;
 
-
-     
-
         // Devuelve la propiedad actualizada
         return property;
     } catch (error) {

@@ -1,10 +1,5 @@
 const {User}=require('../db')
 
-
-
-
-
-
 const createUser = async (newUser) => {
     const { userName, userEmail } = newUser;
   
