@@ -1,14 +1,25 @@
 const {User}=require('../db')
 
 const createUser = async (newUser) => {
-    const { userName, userEmail } = newUser;
+    const { name, email,imageDefault,isActive,DNI,dateOfBirth } = newUser;
   
+    if (!name || !email) {
+      throw new Error('Se requieren nombre de usuario y correo electrónico para crear un usuario.');
+  }
     // Buscar usuario existente por correo electrónico
     let [user, created] = await User.findOrCreate({
-      where: { email: userEmail },
-      defaults: { name: userName }
+      where: {  email },
+      defaults:{
+        name,
+        imageDefault, 
+        isActive, 
+        DNI, 
+         dateOfBirth 
+    }
     });
   
+
+
     // Si se creó un nuevo usuario, devuelve el usuario
     if (created) {
       return user;

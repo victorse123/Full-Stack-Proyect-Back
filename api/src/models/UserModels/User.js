@@ -35,7 +35,18 @@ module.exports = (sequelize) => {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
- 
+      
+    DNI: {
+      type: DataTypes.STRING,
+      //allowNull: false,
+      //unique: true,
+  },
+  dateOfBirth: {
+    type: DataTypes.STRING,
+    //allowNull: false,
+    //unique: true
+},
+
     },
     {  timestamps: false} );
 };
