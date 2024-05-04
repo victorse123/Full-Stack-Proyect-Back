@@ -18,7 +18,7 @@ exports.realizarReserva = async (req, res) => {
     from: process.env.EMAIL_USER,
     to: destinatario,
     subject: 'Confirmación de reserva',
-    text: `Hola ${name} has reservado la propiedad ${propiedad}. Gracias por tu reserva.`
+    text: `Hola ${name}, has reservado la propiedad ${propiedad}. Gracias por tu reserva.`
   };
 
 try {
