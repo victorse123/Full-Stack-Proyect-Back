@@ -12,13 +12,13 @@ const transporter = nodemailer.createTransport({
 
 exports.realizarReserva = async (req, res) => {
   
-  const { destinatario, propiedad } = req.body;
+  const { destinatario, propiedad, name } = req.body;
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: destinatario,
     subject: 'Confirmación de reserva',
-    text: `Has reservado la propiedad ${propiedad}. Gracias por tu reserva.`
+    text: `Hola ${name}, has reservado la propiedad ${propiedad}. Gracias por tu reserva.`
   };
 
 try {
