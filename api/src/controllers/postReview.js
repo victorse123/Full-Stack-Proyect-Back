@@ -5,7 +5,7 @@ const postReview = async (newReview, res) => {
         let { score, description, property, user } = newReview;
 
         const propertyDb = await Property.findOne({ where: { name: property } });
-        const userDB= await User.findOne({where: { name:user }})
+        const UserDB= await User.findOne({where: { name: user }})
        
         if (!propertyDb)throw new Error('Property no encontrada');
         if (!userDB)throw new Error('User no encontrado');
@@ -15,10 +15,10 @@ const postReview = async (newReview, res) => {
             score,
             description,
             propertyId:propertyDb.id,
-            userId:userDB.id
+            UserId:UserDB.id
         });
-         reviewCreated.propertyId=propertyDb.name
-         reviewCreated.userId=userDB.name
+         reviewCreated.propertyId=propertyDb.id ,
+         reviewCreated.UserId=UserDB.id
         return reviewCreated; 
     } catch (error) {
         throw Error(error) 

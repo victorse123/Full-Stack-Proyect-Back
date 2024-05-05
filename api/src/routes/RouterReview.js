@@ -5,8 +5,8 @@ const { Review } = require('../db');
 // Ruta para una nueva review
 router.post('/', async (req, res) => {
   try {
-    const { userId, propertyId, score, description } = req.body;
-    const newReview = await Review.create({ userId, propertyId, score, description });
+    const { UserId, propertyId, score, description } = req.body;
+    const newReview = await Review.create({ UserId, propertyId, score, description });
     res.status(201).json(newReview);
   } catch (error) {
     res.status(400).json({ error: error.message });
