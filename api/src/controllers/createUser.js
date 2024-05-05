@@ -1,10 +1,5 @@
 const {User}=require('../db')
 
-
-
-
-
-
 const createUser = async (newUser) => {
     const { name, email,imageDefault,isActive,DNI,dateOfBirth } = newUser;
   
@@ -22,8 +17,6 @@ const createUser = async (newUser) => {
          dateOfBirth 
     }
     });
-  
-
 
     // Si se creó un nuevo usuario, devuelve el usuario
     if (created) {
