@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
     },
 
     score: {
-        type: DataTypes.TEXT,
+        type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
     },
