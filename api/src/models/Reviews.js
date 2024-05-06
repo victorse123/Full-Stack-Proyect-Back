@@ -13,13 +13,13 @@ module.exports = (sequelize) => {
     score: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
+        
     },
 
     description: {
         type: DataTypes.TEXT,
         allowNull: false,
-        unique: true,
+        
     },
 
 },{timestamps: false});
