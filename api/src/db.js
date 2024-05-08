@@ -10,7 +10,7 @@ const propertyModel = require("./models/Property");
 const categoryModel = require("./models/Category");
 const userModel = require('./models/UserModels/User');
 const reviewModel = require('./models/Reviews')
-
+const saleModel=require('./models/Sales');
 
 const sequelize = new Sequelize(
     `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
@@ -45,6 +45,7 @@ modelDefiners.push(propertyModel(sequelize));
 modelDefiners.push(categoryModel(sequelize));
 modelDefiners.push(userModel(sequelize));
 modelDefiners.push(reviewModel(sequelize));
+modelDefiners.push(saleModel(sequelize));
 
 let entries = Object.entries(sequelize.models);      // Capitalizalos nombres de los modelos ie: product => Product
 let capsEntries = entries.map((entry) => [
@@ -55,7 +56,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Property, Type, Category, User, Review } = sequelize.models;
+const { Property, Type, Category, User, Review,Sales } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -67,6 +68,8 @@ User.belongsToMany(Property, { through: 'UserProperty' });
 Property.belongsToMany(User, { through: 'UserProperty' });
 Property.belongsToMany(Review, {through: 'PropertyReview' });
 User.belongsToMany(Review, {through: 'UserReview'});
+Sales.belongsTo(User);
+Sales.belongsTo(Property);
 
 // Type.belongsToMany(Category, { through: "PropertyTypeCategory" });
 // Category.belongsToMany(Type, { through: "PropertyTypeCategory" });
