@@ -9,7 +9,7 @@ const RouterBooking = require("./RouterBooking");
 const RouterUpdateProperty = require("./RouterUpdateProperty");
 const RouterEdit = require('./RouterEdit');
 const RouterReview = require('./RouterReview');
-// const RouterUser = require("./RouterUser");
+const RouterAllUser = require('./RouterAllUser');
 
 const router = Router();
 
@@ -25,6 +25,7 @@ router.use('/booking', RouterBooking);
 router.use('/update', RouterUpdateProperty);
 router.use("/edit",RouterEdit);
 router.use("/review",RouterReview );
-// router.use("/user", RouterUser);
+router.use("/users", RouterAllUser)
+
 
 module.exports = router;
