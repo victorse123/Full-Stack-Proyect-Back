@@ -25,7 +25,7 @@ try {
         authorizationCode:authorization_code,
         description:propertyDescription,
         amount:transaction_amount,
-        userId:userDb.dataValues.id,
+        UserId:userDb.dataValues.id,
         propertyId:propertyDb.dataValues.id
     })
       return saleCreated

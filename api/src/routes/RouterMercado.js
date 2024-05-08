@@ -42,7 +42,7 @@ try {
        pending:"https://www.youtube.com/watch?v=1x9yytCH3Zs"
     },
     auto_return:"approved",
-    notification_url:"=http://full-stack-proyect-back-production.up.railway.app/createPreference/webhook"
+    notification_url:"https://017a-201-114-107-150.ngrok-free.app/createPreference/webhook"
     }
     //"https://www.youtube.com/watch?v=-VD-l5BQsuE"
     const preference=new Preference(client);
