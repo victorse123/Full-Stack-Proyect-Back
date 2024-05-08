@@ -11,6 +11,10 @@ const RouterEdit = require('./RouterEdit');
 const RouterReview = require('./RouterReview');
 const RouterAllUser = require('./RouterAllUser');
 
+const RouterMercado=require("./RouterMercado")
+const RouterSales=require('./RouterSales')
+
+
 const router = Router();
 
 // Configurarion de los routers
@@ -27,5 +31,6 @@ router.use("/edit",RouterEdit);
 router.use("/review",RouterReview );
 router.use("/users", RouterAllUser)
 
-
+router.use("/createPreference",RouterMercado);
+router.use('/sales',RouterSales);
 module.exports = router;
