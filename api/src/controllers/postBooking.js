@@ -18,7 +18,7 @@ exports.realizarReserva = async (req, res) => {
     from: process.env.EMAIL_USER,
     to: destinatario,
     subject: 'Confirmación de reserva',
-    text: `Hola ${name}, has reservado la propiedad ${propiedad}. Gracias por tu reserva.`
+    text: `Hola ${name}, has reservado la propiedad ${propiedad}. Gracias por tu reserva 6/05/24 9:17 pm.`
   };
 
 try {
@@ -31,3 +31,15 @@ try {
     res.status(500).send('Error al enviar el correo electrónico.');
   }
 };
+
+
+//   transporter.sendMail(mailOptions, function(error, info){
+//     if (error) {
+//       console.log(error);
+//       res.status(500).send('Error al enviar el correo electrónico.');
+//     } else {
+//       console.log('Correo enviado: ' + info.response);
+//       res.status(200).send('Correo enviado correctamente.');
+//     }
+//   });
+// };
