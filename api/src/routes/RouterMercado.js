@@ -37,12 +37,12 @@ try {
 
 
     back_urls:{
-       success:"https://full-stack-proyect-back-production.up.railway.app/home",
-       failure:"http://https://full-stack-proyect-back-production.up.railway.app",
-       pending:"http://https://full-stack-proyect-back-production.up.railway.app"
+       success:"https://full-stack-project-front.vercel.app",
+       failure:"https://full-stack-project-front.vercel.app",
+       pending:"https://full-stack-project-front.vercel.app"
     },
     auto_return:"approved",
-    notification_url:"https://full-stack-proyect-back-production.up.railway.app/createPreference/webhook"
+    notification_url:"https://full-stack-proyect-back-production.up.railway.app/webhook"
     }
     //"https://www.youtube.com/watch?v=-VD-l5BQsuE"
     const preference=new Preference(client);
@@ -94,7 +94,8 @@ try {
         console.log(id, authorization_code, description, transaction_amount);
     
         // Realizar la solicitud POST a la ruta de ventas
-        const repapapa = await axios.post("http://localhost:3001/sales", {
+        const repapapa = await axios.post("https://full-stack-proyect-back-production.up.railway.app/sales", {
+            
             id,
             authorization_code,
             description,
