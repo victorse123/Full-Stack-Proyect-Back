@@ -37,12 +37,12 @@ try {
 
 
     back_urls:{
-       success:"http://localhost:5173/home",
-       failure:"http://localhost:5173",
-       pending:"https://www.youtube.com/watch?v=1x9yytCH3Zs"
+       success:"https://full-stack-proyect-back-production.up.railway.app/home",
+       failure:"http://https://full-stack-proyect-back-production.up.railway.app",
+       pending:"http://https://full-stack-proyect-back-production.up.railway.app"
     },
     auto_return:"approved",
-    notification_url:"https://017a-201-114-107-150.ngrok-free.app/createPreference/webhook"
+    notification_url:"https://full-stack-proyect-back-production.up.railway.app/createPreference/webhook"
     }
     //"https://www.youtube.com/watch?v=-VD-l5BQsuE"
     const preference=new Preference(client);
