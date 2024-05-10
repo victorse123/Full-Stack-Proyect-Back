@@ -41,9 +41,11 @@ try {
        failure:"https://full-stack-project-front.vercel.app",
        pending:"https://full-stack-project-front.vercel.app"
     },
-    auto_return:"approved",
-    notification_url:"https://full-stack-proyect-back-production.up.railway.app/webhook"
+    auto_return: "approved",
+    notification_url: "https://full-stack-proyect-back-production.up.railway.app/createPreference/webhook"
     }
+
+    
     //"https://www.youtube.com/watch?v=-VD-l5BQsuE"
     const preference=new Preference(client);
     const result = await preference.create({body})
@@ -77,7 +79,7 @@ router.post("/webhook",async (req,res)=>{
 //console.log('crakoviano');
 
 const paymentId =req.query['data.id']
-// console.log(req.query);
+ console.log(paymentId);
  //console.log(paymentId['data.id']);
 try {
 
@@ -95,7 +97,7 @@ try {
     
         // Realizar la solicitud POST a la ruta de ventas
         const repapapa = await axios.post("https://full-stack-proyect-back-production.up.railway.app/sales", {
-            
+            //https://full-stack-proyect-back-production.up.railway.app
             id,
             authorization_code,
             description,
