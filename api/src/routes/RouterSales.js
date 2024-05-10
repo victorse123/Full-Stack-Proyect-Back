@@ -1,7 +1,7 @@
 const { Router } = require("express");
 
 const salesController=require('../controllers/salesController')
-
+const findAllSales=require('../controllers/findAllSales')
 const router = Router();
 // router.get("/", async (req,res) => {
 //     const types = await getTypes();
@@ -20,6 +20,22 @@ router.post('/',async(req,res)=>{
         res.status(500).json({error:error.message})
     }})
 
+
+
+
+    router.get('/',async(req,res)=>{
+
+        try {
+            
+        const sales= await findAllSales()
+        res.status(200).json(sales)
+         
+        
+        } catch (error) {
+            res.status(500).json({error:error.message})
+        }
+    })
+    
 
 
 

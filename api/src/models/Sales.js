@@ -22,9 +22,20 @@ module.exports = (sequelize) => {
           amount: {
             type: DataTypes.DECIMAL,
             allowNull: false
-          }
+          },
+          createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+        }
 
     }, { timestamps: false });
+
+
+     // Ganchos para establecer la fecha y hora de registro antes de la creación
+     Sales.beforeCreate((sales, options) => {
+      sales.createdAt = new Date();
+  });
 
     return Sales;
 };
