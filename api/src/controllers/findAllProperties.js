@@ -4,7 +4,7 @@ const findAllProperties = async (type) => {
     try {
         const properties = await Property.findAll({
             where: {
-                isActive: true // Agrega la condición isActive:true
+                // isActive: true // Agrega la condición isActive:true
             },
 
 
