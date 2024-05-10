@@ -17,8 +17,8 @@ const filterController = async (type, category, priceOrder, zone) => {
 
         // Agregar filtro de tipo si se proporciona
         if (type) {
-            const normalizedType = normalizeString(type);
-            const typeDb = await Type.findOne({ where: { name: normalizedType } });
+            
+            const typeDb = await Type.findOne({ where: { name: type } });
             if (!typeDb) {
                 throw new Error('Tipo de propiedad no encontrado');
             }
@@ -27,8 +27,8 @@ const filterController = async (type, category, priceOrder, zone) => {
 
         // Agregar filtro de categoría si se proporciona
         if (category) {
-            const normalizedCategory = normalizeString(category);
-            const categoryDb = await Category.findOne({ where: { name: normalizedCategory } });
+            
+            const categoryDb = await Category.findOne({ where: { name: category } });
             if (!categoryDb) {
                 throw new Error('Categoría de propiedad no encontrada');
             }
