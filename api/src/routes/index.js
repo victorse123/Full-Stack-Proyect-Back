@@ -31,6 +31,9 @@ router.use("/edit",RouterEdit);
 router.use("/review",RouterReview );
 router.use("/users", RouterAllUser)
 
+
 router.use("/createPreference",RouterMercado);
 router.use('/sales',RouterSales);
+
+
 module.exports = router;
