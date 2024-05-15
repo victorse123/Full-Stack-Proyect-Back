@@ -10,6 +10,7 @@ const findAllProperties = async (type) => {
 
             include: [{ model: Type},{model:Category} ],
             attributes: { exclude: ['typeId', 'categoryId'] },
+            order: [['id', 'ASC']]
             
             
         });

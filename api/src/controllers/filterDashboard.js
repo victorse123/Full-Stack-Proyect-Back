@@ -9,11 +9,11 @@ const normalizeString = (str) => {
         .replace(/-/g, ""); // Eliminar guiones
 };
 
-const filterController = async (type, category, priceOrder, zone,page,pageSize) => {
+const filterDashboard = async (type, category, priceOrder, zone,page,pageSize) => {
     try {
         // Objeto para almacenar los filtros de la consulta
         let filter = {
-            isActive: true,
+            //isActive: true,
           
         };
 
@@ -106,4 +106,4 @@ const filterController = async (type, category, priceOrder, zone,page,pageSize) 
     }
 };
 
-module.exports = filterController;
+module.exports = filterDashboard;
