@@ -66,7 +66,7 @@ router.get('/filterProperties', async (req, res) => {
     try {
         const { type, category, priceOrder, zone } = req.query;
         const page = parseInt(req.query.page) || 1;
-        const pageSize=4
+        const pageSize=8
         const properties = await filterController(type, category, priceOrder, zone,page,pageSize);
         res.status(200).json(properties);
     } catch (error) {
