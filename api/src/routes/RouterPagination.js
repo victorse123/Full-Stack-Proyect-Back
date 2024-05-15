@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const findAllProperties = require("../controllers/findWithPagination");
+
 const findAllPropertiesWithPagination=require('../controllers/findWithPagination')
 const router = Router();
 

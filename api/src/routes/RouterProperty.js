@@ -6,7 +6,9 @@ const postProperty = require("../controllers/postProperty");
 const findAllProperties= require("../controllers/findAllProperties")
 const filterController=require('../controllers/filterController');
 const findAllPropertiesWithPagination=require('../controllers/findWithPagination')
+const filterDashboard=require('../controllers/filterDashboard')
 const { Type } = require("../db");
+const { READCOMMITTED } = require("sequelize/lib/table-hints");
 
 const router = Router();
 
@@ -63,7 +65,22 @@ router.get('/getProperties',async(req,res)=>{
 router.get('/filterProperties', async (req, res) => {
     try {
         const { type, category, priceOrder, zone } = req.query;
-        const properties = await filterController(type, category, priceOrder, zone);
+        const page = parseInt(req.query.page) || 1;
+        const pageSize=4
+        const properties = await filterController(type, category, priceOrder, zone,page,pageSize);
+        res.status(200).json(properties);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+
+router.get('/notIs', async (req, res) => {
+    try {
+        const { type, category, priceOrder, zone } = req.query;
+        const page = parseInt(req.query.page) || 1;
+        const pageSize=8
+        const properties = await filterDashboard(type, category, priceOrder, zone,page,pageSize);
         res.status(200).json(properties);
     } catch (error) {
         res.status(500).json({ error: error.message });
