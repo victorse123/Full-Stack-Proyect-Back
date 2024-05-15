@@ -59,8 +59,8 @@ const filterDashboard = async (type, category, priceOrder, zone,page,pageSize) =
             include: [{ model: Type }, { model: Category }],
             attributes: { exclude: ['typeId', 'categoryId'] },
             where: filter,
-            //order: order
-            order: [['id', 'ASC']]
+            order: order
+            //order: [['id', 'ASC']]
         });
 
         const totalItems = properties.count;
